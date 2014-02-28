@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="YourIssues">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-resource.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.min.js">
+    </script>
+    <script src="yourissues.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>Your Issues</title>
+  </head>
+  <body>
+    <h2>Your Issues</h2>
+    <div ng-view></div>
+    <div ng-controller="IssuesController">
+      <table class="table table-striped table-hover">
+        <tr>
+          <th>Title</th>
+          <th>On Github</th>
+        </tr>
+        <tr ng-repeat="issue in issues.data">
+          <td>{{ issue.title }}</td>
+          <td><a href="{{ issue.html_url }}">On GitHub</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
