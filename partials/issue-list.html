@@ -1,0 +1,11 @@
+<h2>Your Issues</h2>
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Title</th>
+    <th>On Github</th>
+  </tr>
+  <tr ng-repeat="issue in issues.data">
+    <td>{{ issue.title }}</td>
+    <td><a href="{{ issue.html_url }}">On GitHub</a></td>
+  </tr>
+</table>

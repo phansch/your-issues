@@ -1,29 +1,21 @@
 <!doctype html>
-<html ng-app="YourIssues">
+<html ng-app="yourIssuesApp">
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-resource.min.js">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.min.js">
-    </script>
-    <script src="yourissues.js"></script>
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
     <title>Your Issues</title>
-  </head>
-  <body>
-    <h2>Your Issues</h2>
-    <div ng-view></div>
-    <div ng-controller="IssuesController">
-      <table class="table table-striped table-hover">
-        <tr>
-          <th>Title</th>
-          <th>On Github</th>
-        </tr>
-        <tr ng-repeat="issue in issues.data">
-          <td>{{ issue.title }}</td>
-          <td><a href="{{ issue.html_url }}">On GitHub</a></td>
-        </tr>
-      </table>
-    </div>
-  </body>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-resource.min.js"></script>
+  </script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+  <ul class="nav nav-pills nav-stacked">
+    <li ng-class="{ active: isActive('/issues/open') }"><a href="#/issues/open">Open Issues</a></li>
+    <li ng-class="{ active: isActive('/issues/closed') }"><a href="#/issues/closed">Closed Issues</a></li>
+  </ul>
+  <div ng-view></div>
+</body>
 </html>
