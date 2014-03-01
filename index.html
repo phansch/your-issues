@@ -18,11 +18,29 @@
   <keybinding on="g i" invoke="gotoOpenIssues()" />
   <keybinding on="g c" invoke="gotoClosedIssues()" />
   <keybinding on="g n" invoke="gotoCreateIssue()" />
-  <ul class="nav nav-pills nav-stacked">
-    <li ng-class="{ active: isActive('/issues/open') }"><a href="#/issues/open">Open Issues</a></li>
-    <li ng-class="{ active: isActive('/issues/closed') }"><a href="#/issues/closed">Closed Issues</a></li>
-    <li ng-class="{ active: isActive('/issues/new') }"><a href="#/issues/new" data-toggle="modal" data-target="#myModal">Create Issue</a></li>
-  </ul>
-  <div ng-view></div>
+
+
+  <ng-include src="'partials/navigation.html'"></ng-include>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="nav nav-pills nav-stacked">
+          <li ng-class="{ active: isActive('/issues/open') }">
+          <a href="#/issues/open">Open Issues</a>
+          </li>
+          <li ng-class="{ active: isActive('/issues/closed') }">
+          <a href="#/issues/closed">Closed Issues</a>
+          </li>
+          <li ng-class="{ active: isActive('/issues/new') }">
+          <a href="#/issues/new">Create Issue</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-8">
+        <div ng-view></div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

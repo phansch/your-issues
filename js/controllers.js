@@ -1,4 +1,4 @@
-function MainCtrl($scope, $location, $window, $route) {
+function MainCtrl($scope, $location, $route) {
   var activePath = null;
 
   $scope.$on('$routeChangeSuccess', function(){
@@ -23,7 +23,6 @@ function MainCtrl($scope, $location, $window, $route) {
   $scope.gotoCreateIssue = function() {
     $location.path('/issues/new');
     if(!$scope.$$phase) $scope.$apply();
-    $('#myModal').modal('toggle')
   };
 
 }
@@ -46,5 +45,5 @@ function NewIssueController($scope, $resource) {
                        {callback: 'JSON_CALLBACK'},
                        {get: { method: 'JSONP' }});
   $scope.tags = $scope.github.get();
-  //on save, redirect
+  $("#title").focus();
 }
