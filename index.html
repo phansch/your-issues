@@ -12,6 +12,8 @@
   <script src="js/controllers.js"></script>
 </head>
 <body ng-controller="MainCtrl">
+  <keybinding on="g i" invoke="gotoOpenIssues()" />
+  <keybinding on="g c" invoke="gotoClosedIssues()" />
   <ul class="nav nav-pills nav-stacked">
     <li ng-class="{ active: isActive('/issues/open') }"><a href="#/issues/open">Open Issues</a></li>
     <li ng-class="{ active: isActive('/issues/closed') }"><a href="#/issues/closed">Closed Issues</a></li>

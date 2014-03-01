@@ -1,4 +1,4 @@
-function MainCtrl($scope, $location, $route) {
+function MainCtrl($scope, $location, $window, $route) {
   var activePath = null;
 
   $scope.$on('$routeChangeSuccess', function(){
@@ -8,6 +8,16 @@ function MainCtrl($scope, $location, $route) {
 
   $scope.isActive = function( pattern ) {
     return (new RegExp( pattern )).test( activePath );
+  };
+
+  $scope.gotoOpenIssues = function() {
+    $location.path('/issues/open');
+    if(!$scope.$$phase) $scope.$apply();
+  };
+
+  $scope.gotoClosedIssues = function() {
+    $location.path('/issues/closed');
+    if(!$scope.$$phase) $scope.$apply();
   };
 }
 function ClosedIssuesController($scope, $resource) {
