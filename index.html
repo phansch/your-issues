@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Your Issues</title>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-resource.min.js"></script>
@@ -15,9 +17,11 @@
 <body ng-controller="MainCtrl">
   <keybinding on="g i" invoke="gotoOpenIssues()" />
   <keybinding on="g c" invoke="gotoClosedIssues()" />
+  <keybinding on="g n" invoke="gotoCreateIssue()" />
   <ul class="nav nav-pills nav-stacked">
     <li ng-class="{ active: isActive('/issues/open') }"><a href="#/issues/open">Open Issues</a></li>
     <li ng-class="{ active: isActive('/issues/closed') }"><a href="#/issues/closed">Closed Issues</a></li>
+    <li ng-class="{ active: isActive('/issues/new') }"><a href="#/issues/new" data-toggle="modal" data-target="#myModal">Create Issue</a></li>
   </ul>
   <div ng-view></div>
 </body>

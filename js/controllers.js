@@ -19,6 +19,13 @@ function MainCtrl($scope, $location, $window, $route) {
     $location.path('/issues/closed');
     if(!$scope.$$phase) $scope.$apply();
   };
+
+  $scope.gotoCreateIssue = function() {
+    $location.path('/issues/new');
+    if(!$scope.$$phase) $scope.$apply();
+    $('#myModal').modal('toggle')
+  };
+
 }
 function ClosedIssuesController($scope, $resource) {
   $scope.github = $resource('https://api.github.com/repos/phansch/your-issues/issues',
@@ -32,4 +39,12 @@ function OpenIssuesController($scope, $resource) {
                             {state: 'open', callback: 'JSON_CALLBACK'},
                             {get: { method: 'JSONP' }});
   $scope.issues = $scope.github.get();
+}
+
+function NewIssueController($scope, $resource) {
+  $scope.github = $resource('https://api.github.com/repos/phansch/your-issues/labels',
+                       {callback: 'JSON_CALLBACK'},
+                       {get: { method: 'JSONP' }});
+  $scope.tags = $scope.github.get();
+  //on save, redirect
 }
